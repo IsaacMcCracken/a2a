@@ -280,11 +280,11 @@ class ApplesToApples:
                         logging.error(f"Invalid input. Please enter the machine learning model (1: Linear Regression, 2: Neural Network): {ml_model_type}")
 
                     # Validate the user input for the pretrained archetype
-                    pretrained_archetype: str = input("Please enter the pretrained archetype (1: Literalist, 2: Contrarian, 3: Comedian): ")
-                    logging.info(f"Please enter the pretrained archetype (1: Literalist, 2: Contrarian, 3: Comedian): {pretrained_archetype}")
-                    while pretrained_archetype not in ['1', '2', '3']:
-                        pretrained_archetype = input("Invalid input. Please enter the pretrained archetype (1: Literalist, 2: Contrarian, 3: Comedian): ")
-                        logging.error(f"Invalid input. Please enter the pretrained archetype (1: Literalist, 2: Contrarian, 3: Comedian): {pretrained_archetype}")
+                    pretrained_archetype: str = input("Please enter the pretrained archetype (1: Literalist, 2: Contrarian, 3: Comedian, 4: Randomist): ")
+                    logging.info(f"Please enter the pretrained archetype (1: Literalist, 2: Contrarian, 3: Comedian, 4: Randomist): {pretrained_archetype}")
+                    while pretrained_archetype not in ['1', '2', '3', '4']:
+                        pretrained_archetype = input("Invalid input. Please enter the pretrained archetype (1: Literalist, 2: Contrarian, 3: Comedian, 4: Randomist): ")
+                        logging.error(f"Invalid input. Please enter the pretrained archetype (1: Literalist, 2: Contrarian, 3: Comedian, 4: Randomist): {pretrained_archetype}")
 
                     # Generate a unique name for the AI agent
                     ml_model_type_class = model_type_mapping[ml_model_type]
@@ -299,6 +299,8 @@ class ApplesToApples:
                         pretrained_archetype_string = "Contrarian"
                     elif pretrained_archetype == '3':
                         pretrained_archetype_string = "Comedian"
+                    elif pretrained_archetype == '4':
+                        pretrained_archetype_string = "Randomist"
                     logging.debug(f"Pretrained Model String: {pretrained_archetype_string}")
 
                     # Create the AI agent

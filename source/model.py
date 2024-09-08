@@ -44,12 +44,12 @@ class Model():
         # Load the pretrained vectors
         self._pretrained_vectors: list[ChosenAppleVectors] = self._load_vectors(self._format_vector_filepath(False))
 
-        # Check that the pretrained vectors have at least 2 vectors
-        if not self._training_mode and len(self._pretrained_vectors) < 2:
-            message = f"Pretrained vectors must have at least 2 vectors."\
-                f"\nPlease train the {self._pretrained_archetype}."
-            logging.error(message)
-            raise ValueError(message)
+        # # Check that the pretrained vectors have at least 2 vectors
+        # if not self._training_mode and len(self._pretrained_vectors) < 2:
+        #     message = f"Pretrained vectors must have at least 2 vectors."\
+        #         f"\nPlease train the {self._pretrained_archetype}."
+        #     logging.error(message)
+        #     raise ValueError(message)
 
         # Initialize the chosen apples and vectors
         self._chosen_apples: list[ChosenApples] = []
@@ -523,6 +523,9 @@ class LRModel(Model):
         elif pretrained_archetype == "Contrarian":
             self._slope: np.ndarray = -1.0 * np.ones((vector_size,))
             self._bias: np.ndarray = np.zeros((vector_size,))
+        elif pretrained_archetype == "Randomist":
+            self._slope = np.random.uniform(-1.0, 1.0, (vector_size,))
+            self._bias = np.random.uniform(-1.0, 1.0, (vector_size,))
         else:
             self._slope, self._bias = self._calculate_slope_and_bias_vectors(self._pretrained_vectors, self.__linear_regression)
 
